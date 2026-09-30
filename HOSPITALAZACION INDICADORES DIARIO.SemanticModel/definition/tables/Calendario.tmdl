@@ -1,0 +1,78 @@
+table Calendario
+	lineageTag: 769ed59e-29f9-47a3-9e5d-a3b27ef7884c
+
+	column Date
+		formatString: General Date
+		lineageTag: f6c8b38a-a06f-4f82-9521-9ebe63b629a2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variación
+			isDefault
+			relationship: 383e5563-f097-4062-907d-5225773f6596
+			defaultHierarchy: LocalDateTable_d5609763-3921-413b-9bb7-a28d34bd28ad.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Año
+		formatString: 0
+		lineageTag: fad920e1-ae51-437d-9862-18ce60c65cf0
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Año]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		lineageTag: fab93239-931a-4b7b-a222-fdc8c0445c3f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Mes]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Número Mes'
+		formatString: 0
+		lineageTag: e7573248-7e9c-4b8d-86cf-85e78e68088a
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Número Mes]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Día
+		formatString: 0
+		lineageTag: d521a05e-08f3-43f0-94e7-993e4af8ef4a
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Día]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Día Semana'
+		lineageTag: 7d202c03-333b-41f4-8591-6b883b415bff
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Día Semana]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calendario = calculated
+		mode: import
+		source =
+				
+				VAR FechaMin = MIN(MIN('df_egresos_dia'[FECHA]), MIN('df_ingresos_dia'[FECHA]))
+				VAR FechaMax = MAX(MAX('df_egresos_dia'[FECHA]), MAX('df_ingresos_dia'[FECHA]))
+				RETURN
+				ADDCOLUMNS (
+				    CALENDAR(FechaMin, FechaMax),
+				    "Año", YEAR([Date]),
+				    "Mes", FORMAT([Date], "mmmm"),
+				    "Número Mes", MONTH([Date]),
+				    "Día", DAY([Date]),
+				    "Día Semana", FORMAT([Date], "dddd")
+				)
+
+	annotation PBI_Id = c32d21b4a39c46eab75b5cc060c48a31
+

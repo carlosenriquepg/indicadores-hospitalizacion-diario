@@ -1,0 +1,25 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-PE
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["df_egresos_dia","df_ingresos_dia","GERENCIA","CAMAS"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table df_egresos_dia
+ref table DateTableTemplate_ccb20dd2-aa1a-46b5-94bf-f00cf29f2039
+ref table df_ingresos_dia
+ref table GERENCIA
+ref table Calendario
+ref table LocalDateTable_d5609763-3921-413b-9bb7-a28d34bd28ad
+ref table CAMAS
+
+ref cultureInfo es-ES
+

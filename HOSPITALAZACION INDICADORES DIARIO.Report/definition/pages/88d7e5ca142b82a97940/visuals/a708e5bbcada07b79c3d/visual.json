@@ -1,0 +1,53 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "a708e5bbcada07b79c3d",
+  "position": {
+    "x": 0,
+    "y": 82.222222222222214,
+    "z": 25500,
+    "height": 27.777777777777779,
+    "width": 315.55555555555554,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "UNIDAD DE INTELIGENCIA PRESTACIONAL",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "color": "#0a5fb4"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "09439e21a4bded0c3d52"
+}

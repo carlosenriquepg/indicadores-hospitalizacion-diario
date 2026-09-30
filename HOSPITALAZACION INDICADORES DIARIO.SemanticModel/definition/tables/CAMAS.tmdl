@@ -1,0 +1,64 @@
+table CAMAS
+	lineageTag: 8639f5f4-27f3-4e42-a058-5d262b37f8de
+
+	measure 'PROMEDIO DÍAS ESTANCIA' =
+			
+			DIVIDE(
+			    SUM(df_egresos_dia[DIAS_HOSPIT]),
+			    SUM(df_egresos_dia[EGRESO]),
+			    0
+			)
+		lineageTag: 878e253f-e865-4a5f-93fd-0ba63ac4e448
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'RENDIMIENTO CAMA' =
+			
+			DIVIDE(
+			    SUM(df_egresos_dia[EGRESO]),
+			    SUM(CAMAS[CAMAS]),
+			    0
+			)
+		lineageTag: 341b3292-d4f1-4f19-a42a-4ac3251a8269
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ESTACION
+		dataType: string
+		lineageTag: 9ac6879a-d97d-4517-8ad6-1587ecd47087
+		summarizeBy: none
+		sourceColumn: ESTACION
+
+		annotation SummarizationSetBy = Automatic
+
+	column CAMAS
+		dataType: int64
+		formatString: 0
+		lineageTag: 48e38ba9-0a63-4ff3-8101-da605e417689
+		summarizeBy: sum
+		sourceColumn: CAMAS
+
+		annotation SummarizationSetBy = Automatic
+
+	column CAMHOSPI
+		dataType: string
+		lineageTag: ca418e56-5f5f-464d-a410-6c7d29004590
+		summarizeBy: none
+		sourceColumn: CAMHOSPI
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CAMAS = m
+		mode: import
+		source =
+				let
+				  Origen = Excel.Workbook(File.Contents("Z:\JEFATURA\POWER BI GENERAL\HOSPITALIZACION\bases\indicador\CAMAS.xlsx"), null, true),
+				  #"Navegación 1" = Origen{[Item = "Hoja1", Kind = "Sheet"]}[Data],
+				  #"Encabezados promovidos" = Table.PromoteHeaders(#"Navegación 1", [PromoteAllScalars = true]),
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"ESTACION", type text}, {"CAMAS", Int64.Type}, {"CAMHOSPI", type text}}, "es"),
+				  #"Filas filtradas" = Table.SelectRows(#"Tipo de columna cambiado", each ([CAMHOSPI] = "HOSPI"))
+				in
+				  #"Filas filtradas"
+
+	annotation PBI_ResultType = Table
+

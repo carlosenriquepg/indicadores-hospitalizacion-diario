@@ -1,0 +1,27 @@
+relationship bd606146-55ee-ff34-3615-4e4de4c11031
+	fromColumn: df_egresos_dia.ESTACION
+	toColumn: GERENCIA.ESTACION_ENFERMERIA
+
+relationship b7eb04ff-a1a6-8634-ade7-5b7aea12de33
+	fromColumn: df_ingresos_dia.ESTACION
+	toColumn: GERENCIA.ESTACION_ENFERMERIA
+
+relationship 383e5563-f097-4062-907d-5225773f6596
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendario.Date
+	toColumn: LocalDateTable_d5609763-3921-413b-9bb7-a28d34bd28ad.Date
+
+relationship 324b3d43-20f1-90c3-0bce-c4770fcf53ef
+	fromColumn: df_egresos_dia.FECHA
+	toColumn: Calendario.Date
+
+relationship 2db259c7-2b60-f100-092c-c0e866b86b57
+	fromColumn: df_ingresos_dia.FECHA
+	toColumn: Calendario.Date
+
+relationship 4bdf573e-4165-d70e-add2-251246284013
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: CAMAS.ESTACION
+	toColumn: GERENCIA.ESTACION_ENFERMERIA
+

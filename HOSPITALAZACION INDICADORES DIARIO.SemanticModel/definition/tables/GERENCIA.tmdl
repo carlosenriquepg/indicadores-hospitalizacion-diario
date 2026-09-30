@@ -1,0 +1,48 @@
+table GERENCIA
+	lineageTag: 224d2e1a-cc6e-475c-8025-94c0f1bf2d07
+
+	column GERENCIA
+		dataType: string
+		lineageTag: 2e0252a4-2819-41e6-92ec-d33bc8e7b38a
+		summarizeBy: none
+		sourceColumn: GERENCIA
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEPARTAMENTO
+		dataType: string
+		lineageTag: a58beb53-ec9d-46f7-820f-55a6de3b20de
+		summarizeBy: none
+		sourceColumn: DEPARTAMENTO
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERVICIO
+		dataType: string
+		lineageTag: da159bfc-065a-4066-a976-1ce8385f5e0e
+		summarizeBy: none
+		sourceColumn: SERVICIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column ESTACION_ENFERMERIA
+		dataType: string
+		lineageTag: 97ccffb6-8a69-4827-854c-37b873fcf0e0
+		summarizeBy: none
+		sourceColumn: ESTACION_ENFERMERIA
+
+		annotation SummarizationSetBy = Automatic
+
+	partition GERENCIA = m
+		mode: import
+		source =
+				let
+				  Origen = Excel.Workbook(File.Contents("Z:\JEFATURA\POWER BI GENERAL\HOSPITALIZACION\conexiones\GERENCIA DEPARTAMENTO POR ESTACION.xlsx"), null, true),
+				  #"Navegación 1" = Origen{[Item = "GERENCIA", Kind = "Sheet"]}[Data],
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Navegación 1", {{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}}, "es"),
+				  #"Encabezados promovidos" = Table.PromoteHeaders(#"Tipo de columna cambiado", [PromoteAllScalars = true])
+				in
+				  #"Encabezados promovidos"
+
+	annotation PBI_ResultType = Table
+

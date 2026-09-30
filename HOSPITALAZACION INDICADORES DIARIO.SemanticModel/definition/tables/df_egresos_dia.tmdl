@@ -1,0 +1,52 @@
+table df_egresos_dia
+	lineageTag: ba63277e-3ac5-4c52-bb6d-1734a08a05ba
+
+	column FECHA
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 61ae8168-1582-43d6-a3ca-ae0d26ad2cec
+		summarizeBy: none
+		sourceColumn: FECHA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ESTACION
+		dataType: string
+		lineageTag: 77467e2a-0640-446d-afc9-e9903c04f4ea
+		summarizeBy: none
+		sourceColumn: ESTACION
+
+		annotation SummarizationSetBy = Automatic
+
+	column EGRESO
+		dataType: int64
+		formatString: 0
+		lineageTag: 3b988f6e-ff42-48a1-ad60-eb9deaba3c23
+		summarizeBy: sum
+		sourceColumn: EGRESO
+
+		annotation SummarizationSetBy = Automatic
+
+	column DIAS_HOSPIT
+		dataType: int64
+		formatString: 0
+		lineageTag: d810bb49-1050-4a05-99c9-712655f32d20
+		summarizeBy: sum
+		sourceColumn: DIAS_HOSPIT
+
+		annotation SummarizationSetBy = Automatic
+
+	partition df_egresos_dia = m
+		mode: import
+		source =
+				let
+				  Origen = Csv.Document(File.Contents("Z:\JEFATURA\POWER BI GENERAL\HOSPITALIZACION\bases\indicador\df_egresos_dia.csv"), [Delimiter = ",", Columns = 4, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"FECHA", type date}, {"ESTACION", type text}, {"EGRESO", Int64.Type}, {"DIAS_HOSPIT", Int64.Type}}, "es")
+				in
+				  #"Tipo de columna cambiado"
+
+	annotation PBI_ResultType = Table
+

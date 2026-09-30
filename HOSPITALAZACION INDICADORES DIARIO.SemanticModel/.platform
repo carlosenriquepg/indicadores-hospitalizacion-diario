@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "HOSPITALAZACION INDICADORES DIARIO"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5e5325ba-c557-4969-bb22-1a496a287595"
+  }
+}

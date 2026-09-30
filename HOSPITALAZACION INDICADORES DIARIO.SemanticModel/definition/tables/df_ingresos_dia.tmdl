@@ -1,0 +1,43 @@
+table df_ingresos_dia
+	lineageTag: 200b3ed7-366e-4d18-ab4c-09f9b81d5fa0
+
+	column FECHA
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fa6f60ad-6404-4518-b174-8fcef5b7a2e1
+		summarizeBy: none
+		sourceColumn: FECHA
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ESTACION
+		dataType: string
+		lineageTag: 336b1213-be81-41c1-81c3-237ea1c6a339
+		summarizeBy: none
+		sourceColumn: ESTACION
+
+		annotation SummarizationSetBy = Automatic
+
+	column INGRESOS
+		dataType: int64
+		formatString: 0
+		lineageTag: 22479ce8-7e04-4b16-8353-a0cce3c47766
+		summarizeBy: sum
+		sourceColumn: INGRESOS
+
+		annotation SummarizationSetBy = Automatic
+
+	partition df_ingresos_dia = m
+		mode: import
+		source =
+				let
+				  Origen = Csv.Document(File.Contents("Z:\JEFATURA\POWER BI GENERAL\HOSPITALIZACION\bases\indicador\df_ingresos_dia.csv"), [Delimiter = ",", Columns = 3, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				  #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos", {{"FECHA", type date}, {"ESTACION", type text}, {"INGRESOS", Int64.Type}}, "es")
+				in
+				  #"Tipo de columna cambiado"
+
+	annotation PBI_ResultType = Table
+
