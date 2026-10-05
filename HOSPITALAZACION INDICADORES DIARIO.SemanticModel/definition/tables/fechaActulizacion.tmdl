@@ -1,0 +1,34 @@
+table fechaActulizacion
+	lineageTag: 7c89f643-56da-4b4a-9617-9721df69f828
+
+	column fechaActulizacion
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4ccce6fd-ee16-4b57-a796-6ee23f47e737
+		summarizeBy: none
+		sourceColumn: fechaActulizacion
+
+		variation Variación
+			isDefault
+			relationship: c31ff4da-a37c-4d4d-9717-eebcfdeae34c
+			defaultHierarchy: LocalDateTable_fb1be4cb-2326-4b10-8514-c2b32b6ca468.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition fechaActulizacion = m
+		mode: import
+		source = ```
+				let
+				    // Obtiene la fecha y hora de la actualización actual
+				    FechaActualizacion = DateTime.LocalNow(),
+				    
+				    // Extrae la fecha y le resta 1 día
+				    FechaAyer = Date.AddDays(DateTime.Date(FechaActualizacion), -1)
+				in
+				    FechaAyer
+				```
+
+	annotation PBI_ResultType = Date
+

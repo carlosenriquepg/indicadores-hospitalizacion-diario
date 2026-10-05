@@ -6,7 +6,17 @@ relationship b7eb04ff-a1a6-8634-ade7-5b7aea12de33
 	fromColumn: df_ingresos_dia.ESTACION
 	toColumn: GERENCIA.ESTACION_ENFERMERIA
 
-relationship 383e5563-f097-4062-907d-5225773f6596
+relationship 4bdf573e-4165-d70e-add2-251246284013
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: CAMAS.ESTACION
+	toColumn: GERENCIA.ESTACION_ENFERMERIA
+
+relationship AutoDetected_ef9d506b-5c51-4dfa-95d1-b3a5639e41b0
+	fromColumn: df_paciente_dia.ESTACION
+	toColumn: GERENCIA.ESTACION_ENFERMERIA
+
+relationship 2283be68-ce84-4f31-8294-bec607f191b2
 	joinOnDateBehavior: datePartOnly
 	fromColumn: Calendario.Date
 	toColumn: LocalDateTable_d5609763-3921-413b-9bb7-a28d34bd28ad.Date
@@ -19,9 +29,12 @@ relationship 2db259c7-2b60-f100-092c-c0e866b86b57
 	fromColumn: df_ingresos_dia.FECHA
 	toColumn: Calendario.Date
 
-relationship 4bdf573e-4165-d70e-add2-251246284013
-	crossFilteringBehavior: bothDirections
-	fromCardinality: one
-	fromColumn: CAMAS.ESTACION
-	toColumn: GERENCIA.ESTACION_ENFERMERIA
+relationship d33a4927-21c9-486b-9f6e-34acf06ecd01
+	fromColumn: df_paciente_dia.FECHA
+	toColumn: Calendario.Date
+
+relationship c31ff4da-a37c-4d4d-9717-eebcfdeae34c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fechaActulizacion.fechaActulizacion
+	toColumn: LocalDateTable_fb1be4cb-2326-4b10-8514-c2b32b6ca468.Date
 

@@ -23,6 +23,21 @@ table CAMAS
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure Ocupacion_Camas =
+			
+			// Cuenta los días que están actualmente seleccionados o filtrados en la tabla Calendario
+			VAR DiasSeleccionados = COUNTROWS('Calendario')
+			
+			RETURN
+			DIVIDE(
+			    SUM('df_paciente_dia'[PACIENTEDIA]),
+			    SUM('CAMAS'[CAMAS]) * DiasSeleccionados,
+			    0
+			)*100
+		lineageTag: ee65bf6b-45c8-4206-9f6f-459caadadf53
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column ESTACION
 		dataType: string
 		lineageTag: 9ac6879a-d97d-4517-8ad6-1587ecd47087
@@ -45,6 +60,14 @@ table CAMAS
 		lineageTag: ca418e56-5f5f-464d-a410-6c7d29004590
 		summarizeBy: none
 		sourceColumn: CAMHOSPI
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ESTACION NOMBRE'
+		dataType: string
+		lineageTag: edb224dc-b29d-4ae3-836c-e36d6148fe4c
+		summarizeBy: none
+		sourceColumn: ESTACION NOMBRE
 
 		annotation SummarizationSetBy = Automatic
 

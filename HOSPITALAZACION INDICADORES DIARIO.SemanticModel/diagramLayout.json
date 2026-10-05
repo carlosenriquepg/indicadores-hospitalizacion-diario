@@ -10,8 +10,8 @@
       "nodes": [
         {
           "location": {
-            "x": 847.23198084093633,
-            "y": 518.89361465001116
+            "x": 831.4309693554153,
+            "y": 450.94926526227061
           },
           "nodeIndex": "df_egresos_dia",
           "nodeLineageTag": "ba63277e-3ac5-4c52-bb6d-1734a08a05ba",
@@ -19,12 +19,12 @@
             "height": 152,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 1
         },
         {
           "location": {
-            "x": 859.71550033404878,
-            "y": 41.225732276783106
+            "x": 824.95327506590252,
+            "y": 31.745125385470466
           },
           "nodeIndex": "df_ingresos_dia",
           "nodeLineageTag": "200b3ed7-366e-4d18-ab4c-09f9b81d5fa0",
@@ -32,12 +32,12 @@
             "height": 152,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 2
         },
         {
           "location": {
-            "x": 513.94810804724,
-            "y": 0
+            "x": 483.92618622475,
+            "y": 251.23608261978487
           },
           "nodeIndex": "GERENCIA",
           "nodeLineageTag": "224d2e1a-cc6e-475c-8025-94c0f1bf2d07",
@@ -45,42 +45,56 @@
             "height": 176,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 3
         },
         {
           "location": {
-            "x": 1168.8559151957975,
-            "y": 197.89331262526824
+            "x": 1154.6350048588286,
+            "y": 205.79381836802881
           },
           "nodeIndex": "Calendario",
+          "nodeLineageTag": "769ed59e-29f9-47a3-9e5d-a3b27ef7884c",
           "size": {
             "height": 200,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 6
         },
         {
           "location": {
-            "x": 348.10805789745962,
-            "y": 309.22710279951087
+            "x": 277.00350621261481,
+            "y": 0
           },
           "nodeIndex": "CAMAS",
           "nodeLineageTag": "8639f5f4-27f3-4e42-a058-5d262b37f8de",
           "size": {
-            "height": 152,
+            "height": 237.32546202181371,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 4
         },
         {
           "location": {
-            "x": 825.06995400461494,
-            "y": 218.06569469093242
+            "x": 826.65005515316716,
+            "y": 259.44680732500558
           },
-          "nodeIndex": "Tabla",
-          "nodeLineageTag": "90edcb3c-a7a6-4105-a64e-ccd681acb724",
+          "nodeIndex": "df_paciente_dia",
+          "nodeLineageTag": "75662435-da8a-4dd1-8368-74a1253c2b1f",
           "size": {
-            "height": 200,
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1161.6314986462137,
+            "y": 249.47463263113531
+          },
+          "nodeIndex": "fechaActulizacion",
+          "nodeLineageTag": "7c89f643-56da-4b4a-9617-9721df69f828",
+          "size": {
+            "height": 104,
             "width": 234
           },
           "zIndex": 0

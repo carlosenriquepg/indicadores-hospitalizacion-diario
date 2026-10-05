@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
-  "name": "0eb80be66404336b0215",
+  "name": "fb58304c6d32cc912ca2",
   "position": {
-    "x": 15.555555555555555,
-    "y": 158.88888888888889,
-    "z": 5000,
-    "height": 58.888888888888886,
-    "width": 547.77777777777771,
-    "tabOrder": 4000
+    "x": 596,
+    "y": 168,
+    "z": 10000,
+    "height": 40,
+    "width": 414,
+    "tabOrder": 9000
   },
   "visual": {
     "visualType": "slicer",
@@ -23,32 +23,15 @@
                       "Entity": "GERENCIA"
                     }
                   },
-                  "Property": "GERENCIA"
+                  "Property": "DEPARTAMENTO"
                 }
               },
-              "queryRef": "GERENCIA.GERENCIA",
-              "nativeQueryRef": "GERENCIA",
+              "queryRef": "GERENCIA.DEPARTAMENTO",
+              "nativeQueryRef": "DEPARTAMENTO",
               "active": true
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "GERENCIA"
-                  }
-                },
-                "Property": "GERENCIA"
-              }
-            },
-            "direction": "Descending"
-          }
-        ]
       }
     },
     "objects": {
@@ -58,7 +41,7 @@
             "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "'Basic'"
+                  "Value": "'Dropdown'"
                 }
               }
             }
@@ -71,7 +54,7 @@
             "orientation": {
               "expr": {
                 "Literal": {
-                  "Value": "1D"
+                  "Value": "0D"
                 }
               }
             },
@@ -133,6 +116,13 @@
                       "Value": "'#4E80B2'"
                     }
                   }
+                }
+              }
+            },
+            "textSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
                 }
               }
             }

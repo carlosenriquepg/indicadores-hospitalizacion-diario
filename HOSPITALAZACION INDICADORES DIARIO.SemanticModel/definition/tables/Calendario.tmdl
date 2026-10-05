@@ -10,7 +10,7 @@ table Calendario
 
 		variation Variación
 			isDefault
-			relationship: 383e5563-f097-4062-907d-5225773f6596
+			relationship: 2283be68-ce84-4f31-8294-bec607f191b2
 			defaultHierarchy: LocalDateTable_d5609763-3921-413b-9bb7-a28d34bd28ad.'Jerarquía de fechas'
 
 		annotation SummarizationSetBy = Automatic
@@ -60,10 +60,18 @@ table Calendario
 
 	partition Calendario = calculated
 		mode: import
-		source =
+		source = ```
 				
-				VAR FechaMin = MIN(MIN('df_egresos_dia'[FECHA]), MIN('df_ingresos_dia'[FECHA]))
-				VAR FechaMax = MAX(MAX('df_egresos_dia'[FECHA]), MAX('df_ingresos_dia'[FECHA]))
+				VAR FechaMin = 
+				    MIN(
+				        MIN('df_egresos_dia'[FECHA]), 
+				        MIN(MIN('df_ingresos_dia'[FECHA]), MIN('df_paciente_dia'[FECHA]))
+				    )
+				VAR FechaMax = 
+				    MAX(
+				        MAX('df_egresos_dia'[FECHA]), 
+				        MAX(MAX('df_ingresos_dia'[FECHA]), MAX('df_paciente_dia'[FECHA]))
+				    )
 				RETURN
 				ADDCOLUMNS (
 				    CALENDAR(FechaMin, FechaMax),
@@ -73,6 +81,7 @@ table Calendario
 				    "Día", DAY([Date]),
 				    "Día Semana", FORMAT([Date], "dddd")
 				)
+				```
 
 	annotation PBI_Id = c32d21b4a39c46eab75b5cc060c48a31
 

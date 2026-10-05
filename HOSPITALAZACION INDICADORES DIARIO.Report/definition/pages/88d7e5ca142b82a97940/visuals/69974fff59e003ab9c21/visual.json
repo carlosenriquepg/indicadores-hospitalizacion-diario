@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
   "name": "69974fff59e003ab9c21",
   "position": {
-    "x": 16,
-    "y": 236,
+    "x": 130,
+    "y": 296,
     "z": 3000,
-    "height": 824,
-    "width": 1884,
+    "height": 768,
+    "width": 1686,
     "tabOrder": 2000
   },
   "visual": {
@@ -35,14 +35,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "GERENCIA"
+                      "Entity": "CAMAS"
                     }
                   },
-                  "Property": "ESTACION_ENFERMERIA"
+                  "Property": "ESTACION NOMBRE"
                 }
               },
-              "queryRef": "GERENCIA.ESTACION_ENFERMERIA",
-              "nativeQueryRef": "ESTACION_ENFERMERIA",
+              "queryRef": "CAMAS.ESTACION NOMBRE",
+              "nativeQueryRef": "ESTACION NOMBRE",
               "active": false
             }
           ]
@@ -106,8 +106,28 @@
                 }
               },
               "queryRef": "Sum(df_egresos_dia.EGRESO)",
-              "nativeQueryRef": "EGRESO",
-              "displayName": "EGRESO"
+              "nativeQueryRef": "EGRESOS",
+              "displayName": "EGRESOS"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "df_paciente_dia"
+                        }
+                      },
+                      "Property": "PACIENTEDIA"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(df_paciente_dia.PACIENTEDIA)",
+              "nativeQueryRef": "TOTAL PACIENTE DÍA",
+              "displayName": "TOTAL PACIENTE DÍA"
             },
             {
               "field": {
@@ -121,7 +141,8 @@
                 }
               },
               "queryRef": "CAMAS.Promedio Días Estancia",
-              "nativeQueryRef": "PROMEDIO DÍAS ESTANCIA"
+              "nativeQueryRef": "PROMEDIO DÍA ESTANCIA",
+              "displayName": "PROMEDIO DÍA ESTANCIA"
             },
             {
               "field": {
@@ -136,6 +157,21 @@
               },
               "queryRef": "CAMAS.RENDIMIENTO CAMA",
               "nativeQueryRef": "RENDIMIENTO CAMA"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CAMAS"
+                    }
+                  },
+                  "Property": "Ocupacion_Camas"
+                }
+              },
+              "queryRef": "CAMAS.Ocupacion_Camas",
+              "nativeQueryRef": "% OCUPACIÓN CAMA",
+              "displayName": "% OCUPACIÓN CAMA"
             }
           ]
         }
@@ -168,7 +204,7 @@
           },
           {
             "queryRefs": [
-              "GERENCIA.ESTACION_ENFERMERIA"
+              "CAMAS.ESTACION NOMBRE"
             ],
             "isCollapsed": true,
             "isPinned": true
@@ -246,6 +282,989 @@
               }
             }
           }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "CAMAS.Promedio Días Estancia"
+          }
+        },
+        {
+          "properties": {
+            "icon": {
+              "kind": "Icon",
+              "layout": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Before'"
+                  }
+                }
+              },
+              "verticalAlignment": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Top'"
+                  }
+                }
+              },
+              "value": {
+                "expr": {
+                  "Conditional": {
+                    "Cases": [
+                      {
+                        "Condition": {
+                          "And": {
+                            "Left": {
+                              "Comparison": {
+                                "ComparisonKind": 1,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "PROMEDIO DÍAS ESTANCIA"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "12D"
+                                  }
+                                }
+                              }
+                            },
+                            "Right": {
+                              "Comparison": {
+                                "ComparisonKind": 4,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "PROMEDIO DÍAS ESTANCIA"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "100D"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Value": {
+                          "Literal": {
+                            "Value": "'CircleRedPatternFill'"
+                          }
+                        }
+                      },
+                      {
+                        "Condition": {
+                          "And": {
+                            "Left": {
+                              "Comparison": {
+                                "ComparisonKind": 1,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "PROMEDIO DÍAS ESTANCIA"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "10D"
+                                  }
+                                }
+                              }
+                            },
+                            "Right": {
+                              "Comparison": {
+                                "ComparisonKind": 4,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "PROMEDIO DÍAS ESTANCIA"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "12D"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Value": {
+                          "Literal": {
+                            "Value": "'CircleYellowPatternFill'"
+                          }
+                        }
+                      },
+                      {
+                        "Condition": {
+                          "And": {
+                            "Left": {
+                              "Comparison": {
+                                "ComparisonKind": 2,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "PROMEDIO DÍAS ESTANCIA"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "0D"
+                                  }
+                                }
+                              }
+                            },
+                            "Right": {
+                              "Comparison": {
+                                "ComparisonKind": 4,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "PROMEDIO DÍAS ESTANCIA"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "10D"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Value": {
+                          "Literal": {
+                            "Value": "'CircleGreenPatternFill'"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "CAMAS.Promedio Días Estancia"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "CAMAS.RENDIMIENTO CAMA"
+          }
+        },
+        {
+          "properties": {
+            "icon": {
+              "kind": "Icon",
+              "layout": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Before'"
+                  }
+                }
+              },
+              "verticalAlignment": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Top'"
+                  }
+                }
+              },
+              "value": {
+                "expr": {
+                  "Conditional": {
+                    "Cases": [
+                      {
+                        "Condition": {
+                          "And": {
+                            "Left": {
+                              "Comparison": {
+                                "ComparisonKind": 2,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "RENDIMIENTO CAMA"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "3D"
+                                  }
+                                }
+                              }
+                            },
+                            "Right": {
+                              "Comparison": {
+                                "ComparisonKind": 4,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "RENDIMIENTO CAMA"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "200D"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Value": {
+                          "Literal": {
+                            "Value": "'CircleGreenPatternFill'"
+                          }
+                        }
+                      },
+                      {
+                        "Condition": {
+                          "And": {
+                            "Left": {
+                              "Comparison": {
+                                "ComparisonKind": 2,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "RENDIMIENTO CAMA"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "2.4D"
+                                  }
+                                }
+                              }
+                            },
+                            "Right": {
+                              "Comparison": {
+                                "ComparisonKind": 3,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "RENDIMIENTO CAMA"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "3D"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Value": {
+                          "Literal": {
+                            "Value": "'CircleYellowPatternFill'"
+                          }
+                        }
+                      },
+                      {
+                        "Condition": {
+                          "And": {
+                            "Left": {
+                              "Comparison": {
+                                "ComparisonKind": 2,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "RENDIMIENTO CAMA"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "-200D"
+                                  }
+                                }
+                              }
+                            },
+                            "Right": {
+                              "Comparison": {
+                                "ComparisonKind": 3,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "RENDIMIENTO CAMA"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "2.4D"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Value": {
+                          "Literal": {
+                            "Value": "'CircleRedPatternFill'"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "CAMAS.RENDIMIENTO CAMA"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "CAMAS.Ocupacion_Camas"
+          }
+        },
+        {
+          "properties": {
+            "icon": {
+              "kind": "Icon",
+              "layout": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Before'"
+                  }
+                }
+              },
+              "verticalAlignment": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Top'"
+                  }
+                }
+              },
+              "value": {
+                "expr": {
+                  "Conditional": {
+                    "Cases": [
+                      {
+                        "Condition": {
+                          "And": {
+                            "Left": {
+                              "Comparison": {
+                                "ComparisonKind": 1,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "Ocupacion_Camas"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "95D"
+                                  }
+                                }
+                              }
+                            },
+                            "Right": {
+                              "Comparison": {
+                                "ComparisonKind": 3,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "Ocupacion_Camas"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "1000D"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Value": {
+                          "Literal": {
+                            "Value": "'CircleRedPatternFill'"
+                          }
+                        }
+                      },
+                      {
+                        "Condition": {
+                          "And": {
+                            "Left": {
+                              "Comparison": {
+                                "ComparisonKind": 2,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "Ocupacion_Camas"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "92.5D"
+                                  }
+                                }
+                              }
+                            },
+                            "Right": {
+                              "Comparison": {
+                                "ComparisonKind": 4,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "Ocupacion_Camas"
+                                  }
+                                },
+                                "Right": {
+                                  "Literal": {
+                                    "Value": "95D"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Value": {
+                          "Literal": {
+                            "Value": "'CircleYellowPatternFill'"
+                          }
+                        }
+                      },
+                      {
+                        "Condition": {
+                          "And": {
+                            "Left": {
+                              "Comparison": {
+                                "ComparisonKind": 2,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "Ocupacion_Camas"
+                                  }
+                                },
+                                "Right": {
+                                  "RangePercent": {
+                                    "Min": {
+                                      "ScopedEval": {
+                                        "Expression": {
+                                          "Aggregation": {
+                                            "Expression": {
+                                              "ScopedEval": {
+                                                "Expression": {
+                                                  "Measure": {
+                                                    "Expression": {
+                                                      "SourceRef": {
+                                                        "Entity": "CAMAS"
+                                                      }
+                                                    },
+                                                    "Property": "Ocupacion_Camas"
+                                                  }
+                                                },
+                                                "Scope": [
+                                                  {
+                                                    "AllRolesRef": {}
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "Function": 3
+                                          }
+                                        },
+                                        "Scope": []
+                                      }
+                                    },
+                                    "Max": {
+                                      "ScopedEval": {
+                                        "Expression": {
+                                          "Aggregation": {
+                                            "Expression": {
+                                              "ScopedEval": {
+                                                "Expression": {
+                                                  "Measure": {
+                                                    "Expression": {
+                                                      "SourceRef": {
+                                                        "Entity": "CAMAS"
+                                                      }
+                                                    },
+                                                    "Property": "Ocupacion_Camas"
+                                                  }
+                                                },
+                                                "Scope": [
+                                                  {
+                                                    "AllRolesRef": {}
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "Function": 4
+                                          }
+                                        },
+                                        "Scope": []
+                                      }
+                                    },
+                                    "Percent": 0.875
+                                  }
+                                }
+                              }
+                            },
+                            "Right": {
+                              "Comparison": {
+                                "ComparisonKind": 3,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "Ocupacion_Camas"
+                                  }
+                                },
+                                "Right": {
+                                  "RangePercent": {
+                                    "Min": {
+                                      "ScopedEval": {
+                                        "Expression": {
+                                          "Aggregation": {
+                                            "Expression": {
+                                              "ScopedEval": {
+                                                "Expression": {
+                                                  "Measure": {
+                                                    "Expression": {
+                                                      "SourceRef": {
+                                                        "Entity": "CAMAS"
+                                                      }
+                                                    },
+                                                    "Property": "Ocupacion_Camas"
+                                                  }
+                                                },
+                                                "Scope": [
+                                                  {
+                                                    "AllRolesRef": {}
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "Function": 3
+                                          }
+                                        },
+                                        "Scope": []
+                                      }
+                                    },
+                                    "Max": {
+                                      "ScopedEval": {
+                                        "Expression": {
+                                          "Aggregation": {
+                                            "Expression": {
+                                              "ScopedEval": {
+                                                "Expression": {
+                                                  "Measure": {
+                                                    "Expression": {
+                                                      "SourceRef": {
+                                                        "Entity": "CAMAS"
+                                                      }
+                                                    },
+                                                    "Property": "Ocupacion_Camas"
+                                                  }
+                                                },
+                                                "Scope": [
+                                                  {
+                                                    "AllRolesRef": {}
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "Function": 4
+                                          }
+                                        },
+                                        "Scope": []
+                                      }
+                                    },
+                                    "Percent": 0.925
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Value": {
+                          "Literal": {
+                            "Value": "'CircleGreenPatternFill'"
+                          }
+                        }
+                      },
+                      {
+                        "Condition": {
+                          "And": {
+                            "Left": {
+                              "Comparison": {
+                                "ComparisonKind": 2,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "Ocupacion_Camas"
+                                  }
+                                },
+                                "Right": {
+                                  "RangePercent": {
+                                    "Min": {
+                                      "ScopedEval": {
+                                        "Expression": {
+                                          "Aggregation": {
+                                            "Expression": {
+                                              "ScopedEval": {
+                                                "Expression": {
+                                                  "Measure": {
+                                                    "Expression": {
+                                                      "SourceRef": {
+                                                        "Entity": "CAMAS"
+                                                      }
+                                                    },
+                                                    "Property": "Ocupacion_Camas"
+                                                  }
+                                                },
+                                                "Scope": [
+                                                  {
+                                                    "AllRolesRef": {}
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "Function": 3
+                                          }
+                                        },
+                                        "Scope": []
+                                      }
+                                    },
+                                    "Max": {
+                                      "ScopedEval": {
+                                        "Expression": {
+                                          "Aggregation": {
+                                            "Expression": {
+                                              "ScopedEval": {
+                                                "Expression": {
+                                                  "Measure": {
+                                                    "Expression": {
+                                                      "SourceRef": {
+                                                        "Entity": "CAMAS"
+                                                      }
+                                                    },
+                                                    "Property": "Ocupacion_Camas"
+                                                  }
+                                                },
+                                                "Scope": [
+                                                  {
+                                                    "AllRolesRef": {}
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "Function": 4
+                                          }
+                                        },
+                                        "Scope": []
+                                      }
+                                    },
+                                    "Percent": 0.85
+                                  }
+                                }
+                              }
+                            },
+                            "Right": {
+                              "Comparison": {
+                                "ComparisonKind": 3,
+                                "Left": {
+                                  "Measure": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Entity": "CAMAS"
+                                      }
+                                    },
+                                    "Property": "Ocupacion_Camas"
+                                  }
+                                },
+                                "Right": {
+                                  "RangePercent": {
+                                    "Min": {
+                                      "ScopedEval": {
+                                        "Expression": {
+                                          "Aggregation": {
+                                            "Expression": {
+                                              "ScopedEval": {
+                                                "Expression": {
+                                                  "Measure": {
+                                                    "Expression": {
+                                                      "SourceRef": {
+                                                        "Entity": "CAMAS"
+                                                      }
+                                                    },
+                                                    "Property": "Ocupacion_Camas"
+                                                  }
+                                                },
+                                                "Scope": [
+                                                  {
+                                                    "AllRolesRef": {}
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "Function": 3
+                                          }
+                                        },
+                                        "Scope": []
+                                      }
+                                    },
+                                    "Max": {
+                                      "ScopedEval": {
+                                        "Expression": {
+                                          "Aggregation": {
+                                            "Expression": {
+                                              "ScopedEval": {
+                                                "Expression": {
+                                                  "Measure": {
+                                                    "Expression": {
+                                                      "SourceRef": {
+                                                        "Entity": "CAMAS"
+                                                      }
+                                                    },
+                                                    "Property": "Ocupacion_Camas"
+                                                  }
+                                                },
+                                                "Scope": [
+                                                  {
+                                                    "AllRolesRef": {}
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "Function": 4
+                                          }
+                                        },
+                                        "Scope": []
+                                      }
+                                    },
+                                    "Percent": 0.875
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "Value": {
+                          "Literal": {
+                            "Value": "'CircleYellowPatternFill'"
+                          }
+                        }
+                      },
+                      {
+                        "Condition": {
+                          "Comparison": {
+                            "ComparisonKind": 3,
+                            "Left": {
+                              "Measure": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Entity": "CAMAS"
+                                  }
+                                },
+                                "Property": "Ocupacion_Camas"
+                              }
+                            },
+                            "Right": {
+                              "RangePercent": {
+                                "Min": {
+                                  "ScopedEval": {
+                                    "Expression": {
+                                      "Aggregation": {
+                                        "Expression": {
+                                          "ScopedEval": {
+                                            "Expression": {
+                                              "Measure": {
+                                                "Expression": {
+                                                  "SourceRef": {
+                                                    "Entity": "CAMAS"
+                                                  }
+                                                },
+                                                "Property": "Ocupacion_Camas"
+                                              }
+                                            },
+                                            "Scope": [
+                                              {
+                                                "AllRolesRef": {}
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "Function": 3
+                                      }
+                                    },
+                                    "Scope": []
+                                  }
+                                },
+                                "Max": {
+                                  "ScopedEval": {
+                                    "Expression": {
+                                      "Aggregation": {
+                                        "Expression": {
+                                          "ScopedEval": {
+                                            "Expression": {
+                                              "Measure": {
+                                                "Expression": {
+                                                  "SourceRef": {
+                                                    "Entity": "CAMAS"
+                                                  }
+                                                },
+                                                "Property": "Ocupacion_Camas"
+                                              }
+                                            },
+                                            "Scope": [
+                                              {
+                                                "AllRolesRef": {}
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "Function": 4
+                                      }
+                                    },
+                                    "Scope": []
+                                  }
+                                },
+                                "Percent": 0.85
+                              }
+                            }
+                          }
+                        },
+                        "Value": {
+                          "Literal": {
+                            "Value": "'CircleRedPatternFill'"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "CAMAS.Ocupacion_Camas"
+          }
         }
       ],
       "columnHeaders": [
@@ -256,8 +1275,8 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 4,
-                      "Percent": -0.25
+                      "ColorId": 5,
+                      "Percent": -0.5
                     }
                   }
                 }
@@ -273,7 +1292,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "15D"
                 }
               }
             },
@@ -307,7 +1326,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "137.69494011924036D"
+                  "Value": "263.8835896919627D"
                 }
               }
             }
@@ -321,7 +1340,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "266D"
+                  "Value": "342D"
                 }
               }
             }
@@ -335,7 +1354,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "82D"
+                  "Value": "96D"
                 }
               }
             }
@@ -349,7 +1368,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "96D"
+                  "Value": "126D"
                 }
               }
             }
@@ -363,7 +1382,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "84D"
+                  "Value": "106D"
                 }
               }
             }
@@ -377,13 +1396,27 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "103D"
+                  "Value": "253.95982145788196D"
                 }
               }
             }
           },
           "selector": {
             "metadata": "CAMAS.RENDIMIENTO CAMA"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "215.77235671199475D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(df_paciente_dia.PACIENTEDIA)"
           }
         }
       ],
@@ -393,7 +1426,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "12D"
                 }
               }
             },
@@ -740,6 +1773,48 @@
           "selector": {
             "metadata": "CAMAS.RENDIMIENTO CAMA"
           }
+        },
+        {
+          "properties": {
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(df_paciente_dia.PACIENTEDIA)"
+          }
+        },
+        {
+          "properties": {
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "CAMAS.Ocupacion_Camas"
+          }
         }
       ]
     },
@@ -751,6 +1826,31 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#003cb0'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "75D"
                 }
               }
             }
@@ -800,111 +1900,21 @@
             }
           }
         }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "f7576f9dc8aab55bc7c5",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "GERENCIA"
-              }
-            },
-            "Property": "DEPARTAMENTO"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "e8b701591603743e7ba5",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "GERENCIA"
-              }
-            },
-            "Property": "ESTACION_ENFERMERIA"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "f84d753ed0143e05cc13",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "df_egresos_dia"
-                  }
-                },
-                "Property": "EGRESO"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "140e5d319c2ea9d2d560",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "df_ingresos_dia"
-                  }
-                },
-                "Property": "INGRESOS"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "f975cbe8626b3ed40ada",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "CAMAS"
-                  }
-                },
-                "Property": "CAMAS"
-              }
-            },
-            "Function": 0
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "8ce3faf739b2839910da",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "CAMAS"
-              }
-            },
-            "Property": "PROMEDIO DÍAS ESTANCIA"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }
