@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "d3f3ffb525d7ba2da90a",
   "position": {
     "x": 1332,
@@ -14,35 +14,7 @@
     "objects": {
       "image": [
         {
-          "properties": {
-            "sourceFile": {
-              "image": {
-                "name": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'Gemini_Generated_Image_mpye45mpye45mpye.jfif'"
-                    }
-                  }
-                },
-                "url": {
-                  "expr": {
-                    "ResourcePackageItem": {
-                      "PackageName": "RegisteredResources",
-                      "PackageType": 1,
-                      "ItemName": "Gemini_Generated_Image_mpye45m11002730662015003.jfif"
-                    }
-                  }
-                },
-                "scaling": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'Normal'"
-                    }
-                  }
-                }
-              }
-            }
-          }
+          "properties": {}
         }
       ]
     },

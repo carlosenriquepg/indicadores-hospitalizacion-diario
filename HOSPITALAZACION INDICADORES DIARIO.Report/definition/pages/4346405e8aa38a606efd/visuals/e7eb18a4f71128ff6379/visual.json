@@ -1,12 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
-  "name": "0990781ba7aa0bb65e88",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "e7eb18a4f71128ff6379",
   "position": {
-    "x": 532,
-    "y": 16,
-    "z": 0,
-    "height": 65.333333333333329,
-    "width": 800
+    "x": 0,
+    "y": 82.222222222222214,
+    "z": 25500,
+    "height": 27.777777777777779,
+    "width": 315.55555555555554,
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "textbox",
@@ -18,15 +19,13 @@
               {
                 "textRuns": [
                   {
-                    "value": "AVANCE PRELIMINAR DE HOSPITALIZACIÓN",
+                    "value": "UNIDAD DE INTELIGENCIA PRESTACIONAL",
                     "textStyle": {
                       "fontWeight": "bold",
-                      "fontSize": "28pt",
-                      "color": "#1662a9"
+                      "color": "#0a5fb4"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "center"
+                ]
               }
             ]
           }
@@ -40,7 +39,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
@@ -49,5 +48,6 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  }
+  },
+  "parentGroupName": "0fe4fe8749e91e04b489"
 }

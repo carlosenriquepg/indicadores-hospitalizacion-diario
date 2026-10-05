@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
-  "name": "0990781ba7aa0bb65e88",
+  "name": "23774daf097ae30432a8",
   "position": {
-    "x": 532,
-    "y": 16,
+    "x": 552.2285714285714,
+    "y": 12.8,
     "z": 0,
-    "height": 65.333333333333329,
-    "width": 800
+    "height": 102.4,
+    "width": 815.54285714285709
   },
   "visual": {
     "visualType": "textbox",
@@ -18,10 +18,10 @@
               {
                 "textRuns": [
                   {
-                    "value": "AVANCE PRELIMINAR DE HOSPITALIZACIÓN",
+                    "value": "GLOSARIO",
                     "textStyle": {
                       "fontWeight": "bold",
-                      "fontSize": "28pt",
+                      "fontSize": "54pt",
                       "color": "#1662a9"
                     }
                   }
@@ -40,7 +40,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }

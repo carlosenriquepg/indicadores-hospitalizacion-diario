@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.0.0/schema.json",
   "themeCollection": {
     "baseTheme": {
       "name": "Fluent2-CY26SU09",
@@ -68,16 +68,6 @@
           "name": "Custom8995549657900027.json",
           "path": "Custom8995549657900027.json",
           "type": "CustomTheme"
-        },
-        {
-          "name": "Gemini_Generated_Image_iu2r6gi46912877243549767.jfif",
-          "path": "Gemini_Generated_Image_iu2r6gi46912877243549767.jfif",
-          "type": "Image"
-        },
-        {
-          "name": "Gemini_Generated_Image_mpye45m11002730662015003.jfif",
-          "path": "Gemini_Generated_Image_mpye45m11002730662015003.jfif",
-          "type": "Image"
         },
         {
           "name": "unnamed_(1)017978995620709926.jpg",

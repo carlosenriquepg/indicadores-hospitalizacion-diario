@@ -1,0 +1,40 @@
+table glosario
+	lineageTag: ff4799a3-bb03-45f5-a0d1-edb6cb8602e2
+
+	column Indicador
+		dataType: string
+		lineageTag: 2d4212ff-fe27-4807-b2e8-83a63934d113
+		summarizeBy: none
+		sourceColumn: Indicador
+
+		annotation SummarizationSetBy = Automatic
+
+	column Definición
+		dataType: string
+		lineageTag: b790b336-593d-465e-b3e8-aa75df9442fa
+		summarizeBy: none
+		sourceColumn: Definición
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Forma de Calcular'
+		dataType: string
+		lineageTag: 61e5c0fc-71b8-4a67-aa88-6afb8eaeff1a
+		summarizeBy: none
+		sourceColumn: Forma de Calcular
+
+		annotation SummarizationSetBy = Automatic
+
+	partition glosario = m
+		mode: import
+		source =
+				let
+				  Origen = Excel.Workbook(File.Contents("Z:\JEFATURA\POWER BI GENERAL\HOSPITALIZACION\bases\indicador\GLOSARIO.xlsx"), null, true),
+				  #"Navegación 1" = Origen{[Item = "Hoja1", Kind = "Sheet"]}[Data],
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Navegación 1", {{"Column1", type text}, {"Column2", type text}, {"Column3", type text}}, "es"),
+				  #"Encabezados promovidos" = Table.PromoteHeaders(#"Tipo de columna cambiado", [PromoteAllScalars = true])
+				in
+				  #"Encabezados promovidos"
+
+	annotation PBI_ResultType = Table
+

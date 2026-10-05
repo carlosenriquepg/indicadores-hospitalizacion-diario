@@ -9,7 +9,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["df_egresos_dia","df_ingresos_dia","GERENCIA","CAMAS","df_paciente_dia","fechaActulizacion"]
+annotation PBI_QueryOrder = ["df_egresos_dia","df_ingresos_dia","GERENCIA","CAMAS","df_paciente_dia","fechaActulizacion","glosario"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -23,6 +23,7 @@ ref table DateTableTemplate_8524d8d0-5273-4dae-81e1-bf9d30bcaa2b
 ref table LocalDateTable_d5609763-3921-413b-9bb7-a28d34bd28ad
 ref table fechaActulizacion
 ref table LocalDateTable_fb1be4cb-2326-4b10-8514-c2b32b6ca468
+ref table glosario
 
 ref cultureInfo es-ES
 

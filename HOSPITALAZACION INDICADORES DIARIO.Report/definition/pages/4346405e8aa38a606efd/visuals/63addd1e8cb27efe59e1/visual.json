@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
-  "name": "0990781ba7aa0bb65e88",
+  "name": "63addd1e8cb27efe59e1",
   "position": {
-    "x": 532,
-    "y": 16,
-    "z": 0,
-    "height": 65.333333333333329,
-    "width": 800
+    "x": 1.1111111111111112,
+    "y": 57.777777777777779,
+    "z": 25000,
+    "height": 24.444444444444443,
+    "width": 352.22222222222223
   },
   "visual": {
     "visualType": "textbox",
@@ -18,15 +18,14 @@
               {
                 "textRuns": [
                   {
-                    "value": "AVANCE PRELIMINAR DE HOSPITALIZACIÓN",
+                    "value": "OFICINA DE GESTIÓN DE LA INFORMACIÓN ",
                     "textStyle": {
                       "fontWeight": "bold",
-                      "fontSize": "28pt",
-                      "color": "#1662a9"
+                      "fontSize": "9pt",
+                      "color": "#0a5fb4"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "center"
+                ]
               }
             ]
           }
@@ -40,7 +39,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
@@ -49,5 +48,6 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  }
+  },
+  "parentGroupName": "0fe4fe8749e91e04b489"
 }
